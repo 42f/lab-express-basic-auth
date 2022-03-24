@@ -47,7 +47,7 @@ router.get("/logout", isLoggedIn, (req, res, next) => {
   if (req.session.user) {
     req.session.destroy((err) => {
       if (err) {
-        generateFailedLoginForm(req, res, httpStatus.INTERNAL_SERVER_ERROR, "Failed to logout")
+        res.sendStatus(StatusCodes.INTERNAL_SERVER_ERROR);
       } else {
         res.redirect("/");
       }
